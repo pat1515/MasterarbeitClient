@@ -1,13 +1,49 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import GraphQLScreen from './Screens/GraphQLScreen.js';
+import RESTScreen from './Screens/RESTScreen.js'
+
+
+const Tab = createBottomTabNavigator();
+
 
 export default function App() {
+  
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="GraphQL" component={GraphQLScreen} 
+        
+          options={{
+            tabBarLabel: 'GraphQL',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="graphql" color={color} size={size} />
+            ),
+          }}
+        
+        />
+
+
+        <Tab.Screen name="REST" component={RESTScreen} 
+        
+          options={{
+            tabBarLabel: 'REST',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="server-network" color={color} size={size} />
+            ),
+          }}
+        
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+
   );
 }
 
