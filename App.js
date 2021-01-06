@@ -1,13 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Ionicons from '@expo/vector-icons/Ionicons';
+
+import RESTScreen from './RESTScreen.js';
+import GraphQLScreen from './GraphQLScreen.js';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>        
+        <Tab.Screen name="REST"  component={RESTScreen}
+          options={{
+            tabBarLabel: 'REST',
+            tabBarIcon: ({color}) => (
+              <Ionicons name="ios-snow" color={color} size={25} />
+            )
+          }}
+        /> 
+        <Tab.Screen name="GraphQL" component={GraphQLScreen}
+          options={{
+            tabBarLabel: 'GraphQL',
+            tabBarIcon: ({color}) => (
+              <Ionicons name="ios-sunny" color={color} size={25} />
+            )
+          }}        
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 

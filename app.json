@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Client App für die Masterarbeit (Soethe Patrick)"
   }
 }
